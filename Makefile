@@ -5,6 +5,6 @@ test: pacman.c ui.c test.c
 	gcc -g -Wall -std=c99 -o test `pkg-config --cflags sdl gl` $^ -lm `pkg-config --libs sdl gl` -lpng -lSDL_mixer
 
 clean:
-	rm -f test *.o
+	rm -Rf pacman test *.o images testing.ppm
 
 .PHONY: clean

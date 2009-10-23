@@ -264,12 +264,9 @@ int read_png(const char* fname, image_t *img) {
 
     png_read_info(png_ptr, info_ptr);
 
-    int color_type;
-
-    png_get_IHDR(png_ptr, info_ptr, (png_uint_32*)&img->width, (png_uint_32*)&img->height,
-                 &img->bitDepth, &color_type,
-                 NULL, NULL, NULL);
-    
+    img->width = png_get_image_width(png_ptr, info_ptr);
+    img->height = png_get_image_height(png_ptr, info_ptr);
+    img->bitDepth = png_get_bit_depth(png_ptr, info_ptr);
     img->channels = png_get_channels(png_ptr, info_ptr);
     
     if ((img->channels != 4) || (img->bitDepth!=8)) {
